@@ -15,6 +15,7 @@
 					<mat-form-field class="full-width" appearance="outline">
 						<mat-label>Username</mat-label>
 						<input
+						required=""
 						 [(ngModel)]="user.username"
 						 name="username"
 						 matInput placeholder="Enter here">
@@ -25,6 +26,7 @@
 					  <mat-form-field class="full-width" appearance="outline">
 						<mat-label>Password</mat-label>
 						<input
+						required
 						 [(ngModel)]="user.password" 
 						 name="password"
 						 type="password" matInput placeholder="Enter here">
@@ -35,6 +37,7 @@
 					  <mat-form-field class="full-width" appearance="outline">
 						<mat-label>First Name</mat-label>
 						<input
+						required
 						 [(ngModel)]="user.firstName"
 						 name="firstName"
 						  matInput placeholder="Enter here">
@@ -44,6 +47,7 @@
 							<mat-form-field class="full-width" appearance="outline">
 								<mat-label>Last Name</mat-label>
 								<input
+								required
 								 [(ngModel)]="user.lastName" 
 								 name="lastName"
 								 matInput placeholder="Enter here">
@@ -53,6 +57,7 @@
 							<mat-form-field class="full-width" appearance="outline">
 								<mat-label>E-mail</mat-label>
 								<input
+								required
 								 [(ngModel)]="user.email"
 								 name="email"
 								  type="email" matInput placeholder="Enter here">
@@ -62,6 +67,7 @@
 							 <mat-form-field class="full-width" appearance="outline">
 								<mat-label>Phone Number</mat-label>
 								<input
+								required
 								 [(ngModel)]="user.phone"
 								 name="phone"
 								  type="number" matInput placeholder="Enter here">
