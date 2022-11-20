@@ -1,6 +1,10 @@
 package com.examenv.examserver.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -17,6 +21,10 @@ public class User {
     private boolean enabled = true;
     private String profile;
 
+    //user may have many roles
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "user")
+    @JsonIgnore
+    private Set<UserRole> userRoles = new HashSet<>();
     public User() {
     }
 
@@ -30,6 +38,14 @@ public class User {
         this.phone = phone;
         this.enabled = enabled;
         this.profile = profile;
+    }
+
+    public Set<UserRole> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(Set<UserRole> userRoles) {
+        this.userRoles = userRoles;
     }
 
     public String getProfile() {
