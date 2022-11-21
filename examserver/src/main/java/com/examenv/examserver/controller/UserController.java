@@ -5,8 +5,10 @@ import com.examenv.examserver.model.User;
 import com.examenv.examserver.model.UserRole;
 import com.examenv.examserver.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.util.HashSet;
 import java.util.Set;
 
