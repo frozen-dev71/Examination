@@ -7,7 +7,7 @@
 				<div class="container text-center">
 					<img src="../../../assets/logo.jpeg" alt="" class="logo">
 				</div>
-				<h1 class="text-center">Register Here!</h1>
+				<h1 class="text-center">Register</h1>
 
 				<form (ngSubmit)="formSubmit()">
 
@@ -15,7 +15,7 @@
 					<mat-form-field class="full-width" appearance="outline">
 						<mat-label>Username</mat-label>
 						<input
-						required=""
+						required
 						 [(ngModel)]="user.username"
 						 name="username"
 						 matInput placeholder="Enter here">
@@ -75,7 +75,7 @@
 
 							<div class="container text-center">
 								<button type="submit" mat-raised-button color="basic">Register</button>
-								<button type="reset" mat-raised-button style="margin-left: 20px;" color="warn">Clear</button>
+								<button type="reset" mat-raised-button class="ml20" color="warn">Clear</button>
 							</div>
 				</form>
 
