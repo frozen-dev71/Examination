@@ -1,0 +1,7 @@
+.example-spacer {
+	flex: 1 1 auto;
+  }
+  .toolbar-color {
+	background-color: #3778AB;
+	color: white;
+  }
