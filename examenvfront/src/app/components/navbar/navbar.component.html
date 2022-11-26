@@ -6,14 +6,31 @@
    <span>Exam Environment</span>
    <span class="example-spacer"></span>
 
-   <a [routerLink]="'/login'" 
+   <a 
+   *ngIf="!login.isLoggedIn()"
+   [routerLink]="'/login'" 
    mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
 	Login
    </a>
 
-   <a [routerLink]="'/signup'" 
+   <a 
+   *ngIf="!login.isLoggedIn()"
+   [routerLink]="'/signup'" 
     mat-icon-button class="example-icon favorite-icon mr20 ml20" aria-label="Example icon-button with heart icon">
 	Register
+   </a>
+
+   <a 
+   *ngIf="login.isLoggedIn()"
+    mat-icon-button class="example-icon favorite-icon mr20 ml20" aria-label="Example icon-button with heart icon">
+	{{login.getUser().username}}
+   </a>
+
+   <a 
+   (click) = "logout()"
+   *ngIf="login.isLoggedIn()"
+    mat-icon-button class="example-icon favorite-icon mr20 ml20" aria-label="Example icon-button with heart icon">
+	Logout
    </a>
 
  </mat-toolbar>
