@@ -1,6 +1,7 @@
 package com.examenv.examserver.controller;
 
 import com.examenv.examserver.config.JwtUtils;
+import com.examenv.examserver.helper.UserNotFoundException;
 import com.examenv.examserver.model.JwtRequest;
 import com.examenv.examserver.model.JwtResponse;
 import com.examenv.examserver.model.User;
@@ -38,7 +39,7 @@ public class AuthenticateController {
 
             authenticate(jwtRequest.getUsername(),jwtRequest.getPassword());
 
-        }catch (UsernameNotFoundException e){
+        }catch (UserNotFoundException e){
             e.printStackTrace();
             throw new Exception("User not found");
         }
