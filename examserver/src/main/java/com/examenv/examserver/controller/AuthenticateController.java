@@ -1,8 +1,10 @@
 package com.examenv.examserver.controller;
 
 import com.examenv.examserver.config.JwtUtils;
+import com.examenv.examserver.helper.UserNotFoundException;
 import com.examenv.examserver.model.JwtRequest;
 import com.examenv.examserver.model.JwtResponse;
+import com.examenv.examserver.model.User;
 import com.examenv.examserver.service.impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,10 +14,9 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 @RestController
 @CrossOrigin("*")
@@ -38,7 +39,7 @@ public class AuthenticateController {
 
             authenticate(jwtRequest.getUsername(),jwtRequest.getPassword());
 
-        }catch (UsernameNotFoundException e){
+        }catch (UserNotFoundException e){
             e.printStackTrace();
             throw new Exception("User not found");
         }
@@ -64,6 +65,12 @@ public class AuthenticateController {
 
             throw new Exception("Incalid Credentials" + e.getMessage());
         }
+    }
+
+    //Rturn details of current user
+    @GetMapping("/current-user")
+    public User getCurrentUser(Principal principal){
+        return ((User)this.userDetailsService.loadUserByUsername(principal.getName()));
     }
 
 }
