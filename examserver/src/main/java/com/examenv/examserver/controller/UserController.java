@@ -6,6 +6,7 @@ import com.examenv.examserver.model.UserRole;
 import com.examenv.examserver.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.nio.file.attribute.UserPrincipalNotFoundException;
@@ -20,10 +21,17 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
     //creating user
     @PostMapping("/")
     public User createUser(@RequestBody User user) throws Exception {
         user.setProfile("default.png");
+        //encoding password with bcryptpasswordencoder
+
+        user.setPassword(this.bCryptPasswordEncoder.encode(user.getPassword()));
+
         Set<UserRole> roles = new HashSet<>();
 
         Role role1 = new Role();
