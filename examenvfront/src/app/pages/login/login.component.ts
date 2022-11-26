@@ -48,6 +48,14 @@ export class LoginComponent implements OnInit {
             console.log(user);
             // redirect... admin: admin-dashboard
             // redirect... normal: normal-dashboard
+            if (this.login.getUserRole() == "ADMIN"){
+              window.location.href = '/admin';
+
+            }else if (this.login.getUserRole() == "NORMAL"){
+              window.location.href = '/user-dashboard';
+            }else {
+              this.login.logout();
+            }
           }
         );
 
