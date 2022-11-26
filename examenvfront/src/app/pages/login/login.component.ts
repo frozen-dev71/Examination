@@ -64,6 +64,9 @@ export class LoginComponent implements OnInit {
       (error)=> {
         console.log("Error");
         console.log(error);
+        this.snack.open("Invalid Details! Try again" ,"OK",{
+          duration: 2500,
+        })
       }
     );
 
