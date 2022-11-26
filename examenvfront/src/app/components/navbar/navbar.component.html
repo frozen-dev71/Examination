@@ -7,28 +7,28 @@
    <span class="example-spacer"></span>
 
    <a 
-   *ngIf="!login.isLoggedIn()"
+   *ngIf="!isLoggedIn"
    [routerLink]="'/login'" 
    mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
 	Login
    </a>
 
    <a 
-   *ngIf="!login.isLoggedIn()"
+   *ngIf="!isLoggedIn"
    [routerLink]="'/signup'" 
     mat-icon-button class="example-icon favorite-icon mr20 ml20" aria-label="Example icon-button with heart icon">
 	Register
    </a>
 
    <a 
-   *ngIf="login.isLoggedIn()"
+   *ngIf="isLoggedIn && user"
     mat-icon-button class="example-icon favorite-icon mr20 ml20" aria-label="Example icon-button with heart icon">
-	{{login.getUser().username}}
+	{{ user['username'] }}
    </a>
 
    <a 
    (click) = "logout()"
-   *ngIf="login.isLoggedIn()"
+   *ngIf="isLoggedIn"
     mat-icon-button class="example-icon favorite-icon mr20 ml20" aria-label="Example icon-button with heart icon">
 	Logout
    </a>
