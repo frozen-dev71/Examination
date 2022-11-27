@@ -9,7 +9,19 @@ import Swal from 'sweetalert2';
 })
 export class ViewQuizzesComponent implements OnInit {
 
-  quizzes = [];
+  quizzes = [
+    {
+      qId:0,
+      title:'',
+      description: '',
+      category: {
+        title:'',
+      },
+      maxMark: '',
+      numberOfQuestions: ''
+
+    }
+  ];
 
   constructor(private _quiz: QuizService) { }
 
@@ -24,6 +36,30 @@ export class ViewQuizzesComponent implements OnInit {
         Swal.fire("Error!","Error in loading Data!","error");
       }
     );
+  }
+
+  deleteQuiz(qId:any){
+
+    Swal.fire({
+      icon: "question",
+      title:"Are you sure?",
+      confirmButtonText:"Delete",
+      showCancelButton: true,
+    }).then((result)=>{
+
+      if (result.isConfirmed){
+        this._quiz.deleteQuiz(qId).subscribe(
+          (data)=>{
+            this.quizzes=this.quizzes.filter((quiz)=>quiz.qId!=qId);
+            Swal.fire("Success","Quiz deleted","success");
+          },
+          (error)=> {
+            Swal.fire("Error","Error on deleting","error");
+          }
+        );
+      }
+    });
+
   }
 
 }
