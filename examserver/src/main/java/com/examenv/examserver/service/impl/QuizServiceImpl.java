@@ -4,10 +4,11 @@ import com.examenv.examserver.model.exam.Quiz;
 import com.examenv.examserver.repo.QuizRepository;
 import com.examenv.examserver.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Service
 public class QuizServiceImpl implements QuizService {
 
     @Autowired
