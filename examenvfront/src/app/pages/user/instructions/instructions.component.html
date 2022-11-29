@@ -1,0 +1,50 @@
+<div class="bootstrap-wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<mat-card>
+					<mat-card-header>
+							<mat-card-title>
+								Read the instructions on this page carefully
+							</mat-card-title>
+							<mat-card-subtitle>
+								One more step
+							</mat-card-subtitle>
+					</mat-card-header>
+					<mat-card-content class="ml20">
+						<h1>{{quiz.title}}</h1>
+						<p>{{quiz.description}}</p>
+						<mat-divider></mat-divider>
+						<br>
+						<h1>Important Instructions</h1>
+
+						<ul>
+							<li>This quiz is only for practice purpose.</li>
+							<li>You have to submit the quiz before the time is over. <b>({{quiz.numberOfQuestions*2}} minutes)</b> </li>
+							<li>You can participate in the quiz unlimitedly.</li>
+							<li>The are <b>{{quiz.numberOfQuestions}} questions</b> in this quiz.</li>
+							<li>Each question worths <b>{{quiz.maxMark / quiz.numberOfQuestions | number:'1.1-2'}} marks.</b></li>
+							<li>All of the Quizzes are Multiple Choice Questions.</li>
+						</ul>
+
+						<mat-divider></mat-divider>
+						<br>
+						<h1>Attempting Quiz</h1>
+						<ul>
+							<li>Click <b>Start Test</b> button to start the quiz.</li>
+							<li>The time will start the moment you click the Start Test button.</li>
+							<li>You cannot resume this quiz, if interrupted due to any reason.</li>
+							<li>Scroll down to move next question.</li>
+							<li>Click on Submit Button on completion of the quiz.</li>
+							<li>Report of the test is automatically generated in the form of PDF copy.</li>
+						</ul>
+
+					</mat-card-content>
+					<mat-card-actions class="text-center">
+								<button mat-stroked-button>Start Quiz</button>
+					</mat-card-actions>
+				</mat-card>
+			</div>
+		</div>
+	</div>
+</div>
