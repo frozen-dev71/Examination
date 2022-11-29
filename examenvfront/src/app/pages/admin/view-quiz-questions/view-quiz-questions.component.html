@@ -2,6 +2,11 @@
 
 <div class="bootstrap-wrapper">
 	<div class="row">
+
+		<div class="container text-center">
+			<button mat-raised-button color="primary" [routerLink]="'/admin/add-question/'+qId+'/'+qTitle">Add Question</button>
+		</div>
+
 		<div class="col-md-12">
 			<mat-card *ngFor="let quest of questions; let i=index" class="mt20">
 				<mat-card-content>
