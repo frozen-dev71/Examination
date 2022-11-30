@@ -1,4 +1,4 @@
-<div class="bootstrap-wrapper">
+<div class="bootstrap-wrapper" *ngIf="!isSubmit">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-2">
@@ -14,26 +14,28 @@
 					<mat-card-content>
 						<p>
 							<b>Q{{i+1}}) </b>
-							 <span [innerHTML]="quest.content"></span></p>
-						
+							<span [innerHTML]="quest.content"></span>
+						</p>
+
 						<mat-divider></mat-divider>
 						<br>
 
 						<div class="row mt20">
 							<div class="col-md-6">
-								<input type="radio" [value]="quest.option1" [name]="i">{{quest.option1}}
+								<input [(ngModel)]="quest['givenAnswer']" type="radio" [value]="quest.option1" name={{i}}
+									>{{quest.option1}}
 							</div>
 							<div class="col-md-6">
-								<input type="radio" [value]="quest.option2" [name]="i">{{quest.option2}}
+								<input [(ngModel)]="quest['givenAnswer']" type="radio" [value]="quest.option2" name={{i}}>{{quest.option2}}
 							</div>
 						</div>
 
 						<div class="row mt20">
 							<div class="col-md-6">
-								<input type="radio" [value]="quest.option3" [name]="i">{{quest.option3}}
+								<input [(ngModel)]="quest['givenAnswer']" type="radio" [value]="quest.option3" name={{i}}>{{quest.option3}}
 							</div>
 							<div class="col-md-6">
-								<input type="radio" [value]="quest.option4" [name]="i">{{quest.option4}}
+								<input [(ngModel)]="quest['givenAnswer']" type="radio" [value]="quest.option4" name={{i}}>{{quest.option4}}
 							</div>
 						</div>
 
@@ -41,13 +43,36 @@
 				</mat-card>
 
 				<div class="container text-center mt20 mb20">
-						<button mat-raised-button>Submit</button>
+					<button mat-raised-button (click)="submitQuiz()">Submit</button>
 				</div>
 
 			</div>
 			<div class="col-md-2">
-	
+
 			</div>
+		</div>
+	</div>
+</div>
+
+<div class="bootstrap-wrapper" *ngIf="isSubmit">
+	<div class="row mt20">
+		<div class="col-md-6 offset-md-3">
+			<mat-card>
+				<mat-card-header>
+					<mat-card-title>
+						Quiz Result
+					</mat-card-title>
+				</mat-card-header>
+				<mat-card-content class="text-center">
+					<h1>Your Mark: {{ marksGained | number:'1.1-2'}}</h1>
+					<h1>Correct Answers: {{ correctAnswers }}</h1>
+					<h1>Number of Solved Questions: {{ attempted }}</h1>
+				</mat-card-content>
+				<mat-card-actions class="text-center">
+						<button mat-raised-button color="primary">Print Result</button>
+						<button mat-stroked-button [routerLink]="'/user-dashboard/0'">Home</button>
+				</mat-card-actions>
+			</mat-card>
 		</div>
 	</div>
 </div>
