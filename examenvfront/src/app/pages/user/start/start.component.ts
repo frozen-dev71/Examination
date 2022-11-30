@@ -20,6 +20,8 @@ export class StartComponent implements OnInit {
 
   isSubmit = false;
 
+  timer:any;
+
   constructor(private locationSt: LocationStrategy, private _router: ActivatedRoute, private _question: QuestionService) { }
 
   ngOnInit(): void {
@@ -32,12 +34,14 @@ export class StartComponent implements OnInit {
    this._question.getQuestionsOfQuizForTest(this.qId).subscribe(
     (data:any)=>{
      this.questions = data;
+     this.timer = this.questions.length * 2 * 60;
      this.questions.forEach(
       (q:any)=>{
           q['givenAnswer'] = '';
       },
      );
      console.log(this.questions);
+     this.startTimer();
     },
     (error)=>{
       Swal.fire("Error","Error in loading questions of quiz","error");
@@ -65,23 +69,45 @@ export class StartComponent implements OnInit {
     ).then(
       (result)=>{
         if(result.isConfirmed){
-          this.isSubmit = true;
-          this.questions.forEach(
-            (q:any)=>{
-
-              if(q.givenAnswer == q.answer){
-                this.correctAnswers++;
-               let markSingle = this.questions[0].quiz.maxMark / this.questions.length;
-               this.marksGained += markSingle;
-              }
-              if(q.givenAnswer.trim()!=''){
-                this.attempted++;
-              }
-            }
-          );
+          this.evalQuiz();
         }
       }
     );
   }
+
+  startTimer(){
+    let t = window.setInterval(()=>{
+      if(this.timer <= 0){
+        this.evalQuiz();
+        clearInterval(t);
+      }else{
+        this.timer--;
+      }
+    },1000);
+  }
+
+  getFormattedTime(){
+    let mm = Math.floor(this.timer/60);
+    let ss = this.timer - mm * 60;
+    return `${mm} min : ${ss} sec`;
+  }
+
+  evalQuiz(){
+    this.isSubmit = true;
+    this.questions.forEach(
+      (q:any)=>{
+
+        if(q.givenAnswer == q.answer){
+          this.correctAnswers++;
+         let markSingle = this.questions[0].quiz.maxMark / this.questions.length;
+         this.marksGained += markSingle;
+        }
+        if(q.givenAnswer.trim()!=''){
+          this.attempted++;
+        }
+      }
+    );
+  }
+
 
 }
