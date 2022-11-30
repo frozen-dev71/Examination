@@ -1,5 +1,9 @@
 <!-- static navbar -->
+<ngx-ui-loader fgsColor="#3778AB" pbColor="#3778AB" (pbThickness)="5" text="Please Wait" bgsType="cube-grid"></ngx-ui-loader>
+
+<div ngxUiLoaderBlurred (blur)="10">
 <app-navbar></app-navbar>
 
 <!-- dynamic content -->
 <router-outlet></router-outlet>
+</div>
