@@ -2,7 +2,16 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-2">
-				<h3>Instructions</h3>
+			<mat-card class="mt70">
+				<mat-card-content>
+					<h3><b>Instructions</b></h3>
+					<ul>
+						<li>Don't refresh this page</li>
+						<li>Don't switch tabs</li>
+						<li>Don't minimize the window</li>
+					</ul>
+				</mat-card-content>
+			</mat-card>
 			</div>
 			<div class="col-md-8">
 				<ng-container *ngIf="questions">
@@ -77,12 +86,12 @@
 					</mat-card-title>
 				</mat-card-header>
 				<mat-card-content class="text-center">
-					<h1>Your Mark: {{ marksGained | number:'1.1-2'}}</h1>
-					<h1>Correct Answers: {{ correctAnswers }}</h1>
-					<h1>Number of Solved Questions: {{ attempted }}</h1>
+					<h1>Your Mark: <b>{{ marksGained | number:'1.1-2'}}</b></h1>
+					<h1>Correct Answers: <b>{{ correctAnswers }}</b></h1>
+					<h1>Number of Solved Questions: <b>{{ attempted }}</b></h1>
 				</mat-card-content>
 				<mat-card-actions class="text-center">
-						<button mat-raised-button color="primary">Print Result</button>
+						<button mat-raised-button (click)="printPage()" color="primary">Print Result</button>
 						<button mat-stroked-button [routerLink]="'/user-dashboard/0'">Home</button>
 				</mat-card-actions>
 			</mat-card>
