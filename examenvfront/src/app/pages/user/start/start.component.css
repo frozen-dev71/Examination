@@ -1,0 +1,8 @@
+
+.loader-spinner ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+	stroke: #3778AB;
+}
+
+.mt70{
+	margin-top: 70px;
+}

@@ -14,5 +14,6 @@ A simple Quiz project build with SpringBoot and Angular
 + [X] Angular
 + [X] Angular Material
 + [X] MatSnackBar and SweetAlert
++ [X] Ngx-Ui-Loader
 
 ## Project Still In Progress

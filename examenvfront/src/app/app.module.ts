@@ -37,6 +37,10 @@ import { AddQuestionComponent } from './pages/admin/add-question/add-question.co
 import { SidebarComponent as UserSidebar } from './pages/user/sidebar/sidebar.component';
 import { LoadQuizComponent } from './pages/user/load-quiz/load-quiz.component';
 import { InstructionsComponent } from './pages/user/instructions/instructions.component';
+import { StartComponent } from './pages/user/start/start.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { NgxUiLoaderModule,NgxUiLoaderHttpModule } from "ngx-ui-loader";
+
 
 @NgModule({
   declarations: [
@@ -61,6 +65,7 @@ import { InstructionsComponent } from './pages/user/instructions/instructions.co
     UserSidebar,
     LoadQuizComponent,
     InstructionsComponent,
+    StartComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,7 +82,12 @@ import { InstructionsComponent } from './pages/user/instructions/instructions.co
     MatIconModule,
     MatListModule,
     MatSlideToggleModule,
-    MatSelectModule
+    MatSelectModule,
+    MatProgressSpinnerModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderHttpModule.forRoot({
+      showForeground: true,
+    }),
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
