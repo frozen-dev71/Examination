@@ -93,6 +93,18 @@ export class StartComponent implements OnInit {
   }
 
   evalQuiz(){
+    this._question.evaluateQuiz(this.questions).subscribe(
+      (data:any)=>{
+        this.correctAnswers = data.correctAnswers;
+        this.attempted = data.attempted;
+        this.marksGained = data.marksGained;
+        this.isSubmit = true;
+      },
+      (error)=>{
+        console.log(error);
+      }
+    );
+    /*
     this.isSubmit = true;
     this.questions.forEach(
       (q:any)=>{
@@ -107,6 +119,8 @@ export class StartComponent implements OnInit {
         }
       }
     );
+    */
+
   }
 
 
